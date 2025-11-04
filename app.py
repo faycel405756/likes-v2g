@@ -94,19 +94,18 @@ def make_request(enc_uid, token):
 # ✅ إرسال لايك واحد
 async def send_request(enc_uid, token):
     url = "https://clientbp.ggblueshark.com/LikeProfile"
+    headers = url = "https://clientbp.ggblueshark.com/LikeProfile"
     headers = {
-            "Host": "clientbp.ggblueshark.com",
-            "X-Unity-Version": "2018.4.11f1",
-            "Accept": "*/*",
-            "Authorization": f"Bearer {token}",
-            "ReleaseVersion": "OB50",
-            "X-GA": "v1 1",
-            "Accept-Encoding": "gzip, deflate, br",
-            "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8",
-            "Content-Type": "application/x-www-form-urlencoded",
-            "User-Agent": "Free%20Fire/2019118692 CFNetwork/3826.500.111.2.2 Darwin/24.4.0",
-            "Connection": "keep-alive"
-        }       
+            'User-Agent': "Dalvik/2.1.0 (Linux; U; Android 9; ASUS_Z01QD Build/PI)",
+            'Connection': "Keep-Alive",
+            'Accept-Encoding': "gzip",
+            'Authorization': f"Bearer {token}",
+            'Content-Type': "application/x-www-form-urlencoded",
+            'Expect': "100-continue",
+            'X-Unity-Version': "2018.4.11f1",
+            'X-GA': "v1 1",
+            'ReleaseVersion': "OB50"
+        }
     try:
         async with aiohttp.ClientSession() as session:
             async with session.post(url, data=bytes.fromhex(enc_uid), headers=headers) as r:
